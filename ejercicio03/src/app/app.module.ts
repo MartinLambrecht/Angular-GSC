@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { EventAddressComponent } from './event-address/event-address.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    EventAddressComponent
   ],
   imports: [
     BrowserModule,
