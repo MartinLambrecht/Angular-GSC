@@ -41,11 +41,11 @@ export class EventsListComponent implements OnInit {
 			name: "UN Angular Summit",
 			date: "6/10/2037",
 			time: "8am",
-			location: {
-				address: "The UN Angular Center",
-				city: "New York",
-				country: "USA",
-			},
+			// location: {
+			// 	address: "The UN Angular Center",
+			// 	city: "New York",
+			// 	country: "USA",
+			// },
 		},
 	];
 	constructor() {}
