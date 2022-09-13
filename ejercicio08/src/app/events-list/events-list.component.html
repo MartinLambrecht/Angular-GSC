@@ -1,4 +1,4 @@
-<div>
+<div >
   <h3>Listado de todos los eventos disponibles</h3>
 
   <table>
@@ -10,12 +10,12 @@
         <th>Dirección</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+    <tbody >
+      <tr *ngFor="let event of events">
+        <td>{{event.name}}</td>
+        <td>{{event.date}}</td>
+        <td>{{event.time}}</td>
+        <td>{{event.location.address}}, {{event.location.city}}, {{event.location.country}}.</td>
       </tr>
     </tbody>
   </table>
