@@ -1,9 +1,9 @@
 <div>
-  <div *ngFor="let event of events" class="well hoverwell thumbnail">
+  <div *ngFor="let event of events" [ngSwitch]="event.format" class="well hoverwell thumbnail">
     <h2>{{ event.name }}</h2>
-    <span class="label label-warning">En persona</span>
-    <span class="label label-warning">En línea</span>
-    <span class="label label-warning">A determinar</span>
+    <span class="label label-warning" *ngSwitchCase="'InPerson'">En persona</span>
+    <span class="label label-warning" *ngSwitchCase="'Online'">En línea</span>
+    <span class="label label-warning" *ngSwitchDefault="">A determinar</span>
     <div>Fecha: {{ event.date }}</div>
     <div>Hora: {{ event.time }}</div>
     <div *ngIf="event.location">
