@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-parent',
-  templateUrl: './parent.component.html',
-  styleUrls: ['./parent.component.css']
+	selector: "app-parent",
+	templateUrl: "./parent.component.html",
+	styleUrls: ["./parent.component.css"],
 })
 export class ParentComponent implements OnInit {
+	currentCounter = 0;
 
-  currentCounter = 0;
-  
-  constructor() { }
+	getCurrentCounter(value: number) {
+		this.currentCounter = value;
+	}
+	constructor() {}
 
-  ngOnInit() {
-  }
-
+	ngOnInit() {}
 }
