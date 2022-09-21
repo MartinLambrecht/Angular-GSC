@@ -13,6 +13,7 @@ const appRoutes: Routes = [
 		path: "details/:id",
 		component: EventDetailsComponent,
 		canActivate: [DetailsGuard],
+		canDeactivate: [DetailsGuard],
 	},
 	{ path: " ", pathMatch: "full", component: AppComponent },
 ];

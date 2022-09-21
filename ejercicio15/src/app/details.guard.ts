@@ -3,17 +3,34 @@ import {
 	ActivatedRoute,
 	ActivatedRouteSnapshot,
 	CanActivate,
+	CanDeactivate,
 	RouterStateSnapshot,
 	UrlTree,
 } from "@angular/router";
 import { Observable } from "rxjs";
+import { EventDetailsComponent } from "./event-details/event-details.component";
 import { EventsService } from "./events.service";
 
 @Injectable({
 	providedIn: "root",
 })
-export class DetailsGuard implements CanActivate {
+export class DetailsGuard
+	implements CanActivate, CanDeactivate<EventDetailsComponent>
+{
 	constructor(private eventService: EventsService) {}
+
+	canDeactivate(
+		component: EventDetailsComponent,
+		currentRoute: ActivatedRouteSnapshot,
+		currentState: RouterStateSnapshot,
+		nextState?: RouterStateSnapshot | undefined
+	):
+		| boolean
+		| UrlTree
+		| Observable<boolean | UrlTree>
+		| Promise<boolean | UrlTree> {
+		return component.reviewed;
+	}
 
 	canActivate(
 		route: ActivatedRouteSnapshot,

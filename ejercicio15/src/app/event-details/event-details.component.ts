@@ -9,6 +9,7 @@ import { Event, EventsService } from "../events.service";
 })
 export class EventDetailsComponent implements OnInit {
 	public event!: Event | undefined;
+	public reviewed: boolean = false;
 	constructor(
 		private eventService: EventsService,
 		private route: ActivatedRoute,
@@ -19,6 +20,9 @@ export class EventDetailsComponent implements OnInit {
 		const snapshot = this.route.snapshot;
 		const paramId = snapshot.paramMap.get("id");
 		this.event = this.eventService.findEvento(paramId!);
+	}
+	chkChange() {
+		this.reviewed = !this.reviewed;
 	}
 	returnToEvents(): void {
 		this.router.navigateByUrl("/events");
