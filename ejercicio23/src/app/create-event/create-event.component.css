@@ -10,3 +10,6 @@ label {
     margin-top: 5px;
 }
  
+.form-group .ng-invalid.ng-touched {
+    border: 5px solid red;
+}

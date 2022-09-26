@@ -16,6 +16,8 @@ export class CreateEventComponent implements OnInit {
 		location: this.fb.group({ address: "", city: "", country: "" }),
 	});
 
+
+
 	saveEvent() {
 		this.eventService.saveEvent(this.formEvent.value);
 		this.router.navigate(["/events"]);
@@ -30,6 +32,6 @@ export class CreateEventComponent implements OnInit {
 	ngOnInit() {}
 
 	cancel() {
-		this.router.navigate(["/events"]);
+    this.router.navigate(["/events"]);
 	}
 }

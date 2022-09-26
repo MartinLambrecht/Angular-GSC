@@ -2,33 +2,39 @@
   <form [formGroup]="formEvent" (ngSubmit)="saveEvent()">
     <div class="form-group" >
       <label for="event-name">Nombre del evento:</label>
-      <input id="event-name" type="text" formControlName="name"/>
-      <p>{{formEvent.value | json}}</p>
+      <input id="event-name" type="text" formControlName="name" required/>
+      <print-error [control]="formEvent.controls['name']"></print-error>
     </div>
     <div class="form-group">
       <label for="date">Fecha: </label>
-      <input id="date" type="text" formControlName="date"/>
+      <input id="date" type="text" formControlName="date" required/>
+      <print-error [control]="formEvent.controls['date']"></print-error>
     </div>
     <div class="form-group">
       <label for="time">Hora: </label>
-      <input id="time" type="text" formControlName="time"/>
+      <input id="time" type="text" formControlName="time" required/>
+      <print-error [control]="formEvent.controls['time']"></print-error>
     </div>
-    <div formGroupName="location">
+    <div name="location" formGroupName="location">
       <div class="form-group">
         <label for="address">Dirección: </label>
-        <input id="address" type="text" formControlName="address"/>
+        <input id="address" type="text" formControlName="address" required/>
+        <print-error [control]="formEvent.get('location.address')"></print-error>
       </div>
       <div class="form-group">
         <label for="city">Ciudad: </label>
-        <input id="city" type="text" formControlName="city"/>
+        <input id="city" type="text" formControlName="city" required/>
+        <print-error [control]="formEvent.get('location.city')"></print-error>
       </div>
       <div class="form-group">
         <label for="country">Pais: </label>
-        <input id="country" type="text" formControlName="country"/>
+        <input id="country"  type="text" formControlName="country" required pattern=".*[A-Z].*[A-Z].*" />
+        <print-error [control]="formEvent.get('location.country')"></print-error>
       </div>
     </div>
-
-    <button type="submit" class="btn btn-primary" >Guardar</button>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="!formEvent.valid">Guardar</button>
     <button type="button" class="btn btn-default" (click)="cancel()">Cancelar</button>
   </form>
+  <p></p>
 </div>
