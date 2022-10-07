@@ -6,7 +6,15 @@
     </div>
     <div class="form-group">
       <label for="date">Fecha: </label>
-      <input id="date" type="text" name="date" [(ngModel)]="model.date" required=""/>
+      <input id="date" type="text" name="date" [(ngModel)]="model.date" required appWeekendValidation/>
+      <div *ngIf="eventForm.form.controls['date'].errors">
+        <span *ngIf="eventForm.form.controls['date'].errors['isSaturday']" >
+          No puede ser Sabado!!
+        </span>
+        <span *ngIf="eventForm.form.controls['date'].errors['isSunday']" >
+          No puede ser Domingo!!
+        </span>
+      </div>
     </div>
     <div class="form-group">
       <label for="time">Hora: </label>
