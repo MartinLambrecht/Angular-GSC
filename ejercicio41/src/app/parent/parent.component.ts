@@ -1,29 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { of } from 'rxjs';
+import { Component, OnInit } from "@angular/core";
+import { of } from "rxjs";
 
 @Component({
-  selector: 'app-parent',
-  templateUrl: './parent.component.html',
-  styleUrls: ['./parent.component.css']
+	selector: "app-parent",
+	templateUrl: "./parent.component.html",
+	styleUrls: ["./parent.component.css"],
 })
 export class ParentComponent implements OnInit {
+	obs;
+	result: number;
+	promise: Promise<number>;
 
-  obs;
-  result: number;
-  promise: Promise<number>;
+	constructor() {
+		this.obs = of(35);
+	}
 
-  constructor() { 
-    this.obs = of(35);
-  }
+	ngOnInit(): void {
+		this.promise = new Promise((resolve, reject) => {
+			this.obs.subscribe((value: number) => {
+				resolve(value);
+			});
+		});
+	}
 
-  ngOnInit(): void {
-    // ingrese el código aquí
-  }
-
-  listen(): void {
-    this.promise.then((val) => {
-      this.result = val;
-    });
-  }
-
+	listen(): void {
+		this.promise.then((val) => {
+			this.result = val;
+		});
+	}
 }
